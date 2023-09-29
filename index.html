@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            margin: 50px auto;
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Temperature Converter</h2>
+        <label for="celsius">Enter Celsius temperature:</label>
+        <input type="number" id="celsius" placeholder="Celsius" oninput="convertTemperature()">
+        <p>Fahrenheit: <span id="fahrenheit">--</span>&deg;F</p>
+        <p>Kelvin: <span id="kelvin">--</span>K</p>
+    </div>
+
+    <script>
+        function convertTemperature() {
+            const celsiusInput = document.getElementById('celsius').value;
+            const fahrenheitOutput = document.getElementById('fahrenheit');
+            const kelvinOutput = document.getElementById('kelvin');
+
+            if (!isNaN(celsiusInput)) {
+                const celsius = parseFloat(celsiusInput);
+                const fahrenheit = (celsius * 9/5) + 32;
+                const kelvin = celsius + 273.15;
+                fahrenheitOutput.textContent = fahrenheit.toFixed(2);
+                kelvinOutput.textContent = kelvin.toFixed(2);
+            } else {
+                fahrenheitOutput.textContent = '--';
+                kelvinOutput.textContent = '--';
+            }
+        }
+    </script>
+</body>
+</html>
